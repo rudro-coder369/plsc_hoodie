@@ -7,10 +7,8 @@ export default function PaymentOrder() {
   const [copied, setCopied] = useState(false);
   const number = "01710647502";
 
-  const whatsappMessage = encodeURIComponent(
-    "Assalamu Alaikum! Ami PLSCIAN er 350+ GSM Hoodie ti order korte chai."
-  );
-  const whatsappLink = `https://wa.me/88${number}?text=${whatsappMessage}`;
+  // Direct WhatsApp chat link without any default message
+  const whatsappLink = `https://wa.me/88${number}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(number);
