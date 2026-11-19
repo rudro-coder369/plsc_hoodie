@@ -7,9 +7,19 @@ const montserrat = Montserrat({
   weight: ["800", "900"],
 });
 
-export default function Navbar() {
+interface NavbarProps {
+  isLightTheme?: boolean;
+}
+
+export default function Navbar({ isLightTheme = false }: NavbarProps) {
   return (
-    <nav className="sticky top-0 z-50 w-full bg-black/90 backdrop-blur-md border-b border-neutral-900">
+    <nav
+      className={`sticky top-0 z-50 w-full backdrop-blur-md border-b transition-colors duration-500 ${
+        isLightTheme
+          ? "bg-white/90 border-neutral-200"
+          : "bg-black/90 border-neutral-900"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-center sm:justify-start">
         <Link href="/" className="flex items-center gap-2.5 group">
           {/* Logo */}
@@ -25,7 +35,9 @@ export default function Navbar() {
 
           {/* Brand Name: Clean, Bold & Tight Spacing */}
           <span
-            className={`${montserrat.className} text-white text-2xl sm:text-[28px] font-black uppercase tracking-tight`}
+            className={`${montserrat.className} text-2xl sm:text-[28px] font-black uppercase tracking-tight transition-colors duration-500 ${
+              isLightTheme ? "text-black" : "text-white"
+            }`}
           >
             PLSCIAN
           </span>

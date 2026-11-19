@@ -1,24 +1,44 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import Hero, { HoodieVariant } from "@/components/Hero";
 import ProductInfo from "@/components/ProductInfo";
 import PaymentOrder from "@/components/PaymentOrder";
 
 export default function Home() {
+  const [variant, setVariant] = useState<HoodieVariant>("white");
+
+  // White hoodie => Black theme | Black hoodie => White theme
+  const isLightTheme = variant === "black";
+
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col justify-between selection:bg-white selection:text-black">
+    <main
+      className={`min-h-screen flex flex-col justify-between transition-colors duration-500 ${
+        isLightTheme
+          ? "bg-white text-black selection:bg-black selection:text-white"
+          : "bg-black text-white selection:bg-white selection:text-black"
+      }`}
+    >
       {/* Top Navbar */}
-      <Navbar />
+      <Navbar isLightTheme={isLightTheme} />
 
       {/* Main Content */}
-      <div className="flex-grow">
-        <Hero />
-        <ProductInfo />
-        <PaymentOrder />
+      <div className="grow">
+        <Hero variant={variant} onVariantChange={setVariant} />
+        <ProductInfo isLightTheme={isLightTheme} />
+        <PaymentOrder isLightTheme={isLightTheme} />
       </div>
 
       {/* Minimal Footer */}
-      <footer className="w-full bg-black border-t border-neutral-900 py-8 px-6 text-center text-neutral-500 text-sm">
-        <p>© 2026 Plscian. All rights reserved.</p>
+      <footer
+        className={`w-full border-t py-8 px-6 text-center text-neutral-500 text-sm transition-colors duration-500 ${
+          isLightTheme
+            ? "bg-white border-neutral-200"
+            : "bg-black border-neutral-900"
+        }`}
+      >
+        <p>© 2026 PLSCIAN. All rights reserved.</p>
       </footer>
     </main>
   );

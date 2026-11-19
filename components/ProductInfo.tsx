@@ -1,20 +1,29 @@
-export default function ProductInfo() {
+interface ProductInfoProps {
+  isLightTheme?: boolean;
+}
+
+export default function ProductInfo({
+  isLightTheme = false,
+}: ProductInfoProps) {
   const specs = [
     {
       label: "Fabric Weight",
       value: "350+ GSM Heavyweight Fleece",
-      detail: "Ultra-thick construction engineered for maximum warmth & durability.",
+      detail:
+        "Ultra-thick construction engineered for maximum warmth & durability.",
     },
     {
       label: "Material",
       value: "100% Combed Cotton",
-      detail: "Soft brushed interior with a smooth, pill-resistant outer finish.",
+      detail:
+        "Soft brushed interior with a smooth, pill-resistant outer finish.",
     },
     {
       label: "Colorway",
-      value: "Plain Pure White",
-      detail: "Crisp, solid minimalist white with zero fading.",
-      isWhiteSwatch: true,
+      value: "Plain Pure White & Jet Black",
+      detail:
+        "Available in two crisp, solid minimalist editions with zero fading.",
+      isColorSwatch: true,
     },
     {
       label: "Sleeve Style",
@@ -31,16 +40,34 @@ export default function ProductInfo() {
   ];
 
   return (
-    <section className="w-full bg-black text-white py-20 px-6 border-t border-neutral-900">
+    <section
+      className={`w-full py-20 px-6 border-t transition-colors duration-500 ${
+        isLightTheme
+          ? "bg-white text-black border-neutral-200"
+          : "bg-black text-white border-neutral-900"
+      }`}
+    >
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-3">
+          <span
+            className={`inline-block px-4 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-widest mb-3 transition-colors duration-500 ${
+              isLightTheme
+                ? "bg-neutral-100 border-neutral-200 text-neutral-600"
+                : "bg-neutral-950 border-neutral-800 text-neutral-400"
+            }`}
+          >
             Product Specifications
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
             Crafted in{" "}
-            <span className="text-white underline decoration-neutral-600 underline-offset-8">
+            <span
+              className={`underline underline-offset-8 ${
+                isLightTheme
+                  ? "text-black decoration-neutral-400"
+                  : "text-white decoration-neutral-600"
+              }`}
+            >
               350+ GSM
             </span>{" "}
             Fleece
@@ -52,24 +79,42 @@ export default function ProductInfo() {
           {specs.map((item, index) => (
             <div
               key={index}
-              className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-6 hover:border-neutral-700 transition-colors"
+              className={`border rounded-2xl p-6 transition-colors duration-500 ${
+                isLightTheme
+                  ? "bg-neutral-50 border-neutral-200 hover:border-neutral-300"
+                  : "bg-neutral-950 border-neutral-800/80 hover:border-neutral-700"
+              }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[11px] font-semibold uppercase tracking-widest text-neutral-500">
                   {item.label}
                 </span>
-                {item.isWhiteSwatch && (
-                  <span
-                    title="Pure White"
-                    className="w-4 h-4 rounded-full bg-white border border-neutral-600 shadow-[0_0_10px_rgba(255,255,255,0.4)]"
-                  />
+                {item.isColorSwatch && (
+                  <div className="flex items-center gap-1.5">
+                    <span
+                      title="Pure White"
+                      className="w-4 h-4 rounded-full bg-white border border-neutral-400"
+                    />
+                    <span
+                      title="Jet Black"
+                      className="w-4 h-4 rounded-full bg-black border border-neutral-600"
+                    />
+                  </div>
                 )}
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5">
+              <h3
+                className={`text-lg sm:text-xl font-bold mb-1.5 ${
+                  isLightTheme ? "text-black" : "text-white"
+                }`}
+              >
                 {item.value}
               </h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p
+                className={`text-sm leading-relaxed ${
+                  isLightTheme ? "text-neutral-600" : "text-neutral-400"
+                }`}
+              >
                 {item.detail}
               </p>
             </div>
@@ -77,17 +122,33 @@ export default function ProductInfo() {
         </div>
 
         {/* Size Chart Card */}
-        <div className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-6 sm:p-8">
+        <div
+          className={`border rounded-2xl p-6 sm:p-8 transition-colors duration-500 ${
+            isLightTheme
+              ? "bg-neutral-50 border-neutral-200"
+              : "bg-neutral-950 border-neutral-800/80"
+          }`}
+        >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white">
+              <h3
+                className={`text-lg sm:text-xl font-bold ${
+                  isLightTheme ? "text-black" : "text-white"
+                }`}
+              >
                 Size Guide
               </h3>
               <p className="text-xs text-neutral-500">
                 All measurements are in inches (Standard Regular Fit).
               </p>
             </div>
-            <span className="self-start sm:self-auto px-3 py-1 rounded-lg bg-black border border-neutral-800 text-[11px] font-mono uppercase tracking-wider text-neutral-400">
+            <span
+              className={`self-start sm:self-auto px-3 py-1 rounded-lg border text-[11px] font-mono uppercase tracking-wider transition-colors duration-500 ${
+                isLightTheme
+                  ? "bg-white border-neutral-300 text-neutral-600"
+                  : "bg-black border-neutral-800 text-neutral-400"
+              }`}
+            >
               Unit: Inches
             </span>
           </div>
@@ -95,29 +156,57 @@ export default function ProductInfo() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-neutral-800 text-xs uppercase tracking-wider text-neutral-400">
+                <tr
+                  className={`border-b text-xs uppercase tracking-wider ${
+                    isLightTheme
+                      ? "border-neutral-200 text-neutral-500"
+                      : "border-neutral-800 text-neutral-400"
+                  }`}
+                >
                   <th className="py-3.5 px-4 font-semibold">Size</th>
                   <th className="py-3.5 px-4 font-semibold">Chest</th>
                   <th className="py-3.5 px-4 font-semibold">Length</th>
                   <th className="py-3.5 px-4 font-semibold">Full Sleeve</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-neutral-900 text-sm">
+              <tbody
+                className={`divide-y text-sm ${
+                  isLightTheme ? "divide-neutral-200" : "divide-neutral-900"
+                }`}
+              >
                 {sizeChart.map((row) => (
                   <tr
                     key={row.size}
-                    className="hover:bg-black/60 transition-colors"
+                    className={`transition-colors ${
+                      isLightTheme ? "hover:bg-white" : "hover:bg-black/60"
+                    }`}
                   >
-                    <td className="py-3.5 px-4 font-bold text-white">
+                    <td
+                      className={`py-3.5 px-4 font-bold ${
+                        isLightTheme ? "text-black" : "text-white"
+                      }`}
+                    >
                       {row.size}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-neutral-300">
+                    <td
+                      className={`py-3.5 px-4 font-mono ${
+                        isLightTheme ? "text-neutral-700" : "text-neutral-300"
+                      }`}
+                    >
                       {row.chest}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-neutral-300">
+                    <td
+                      className={`py-3.5 px-4 font-mono ${
+                        isLightTheme ? "text-neutral-700" : "text-neutral-300"
+                      }`}
+                    >
                       {row.length}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-neutral-300">
+                    <td
+                      className={`py-3.5 px-4 font-mono ${
+                        isLightTheme ? "text-neutral-700" : "text-neutral-300"
+                      }`}
+                    >
                       {row.sleeve}
                     </td>
                   </tr>

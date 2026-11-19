@@ -3,7 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function PaymentOrder() {
+interface PaymentOrderProps {
+  isLightTheme?: boolean;
+}
+
+export default function PaymentOrder({
+  isLightTheme = false,
+}: PaymentOrderProps) {
   const [copied, setCopied] = useState(false);
   const number = "01710647502";
 
@@ -19,7 +25,11 @@ export default function PaymentOrder() {
   return (
     <section
       id="order-section"
-      className="w-full bg-black text-white py-20 px-6 border-t border-neutral-900"
+      className={`w-full py-20 px-6 border-t transition-colors duration-500 ${
+        isLightTheme
+          ? "bg-white text-black border-neutral-200"
+          : "bg-black text-white border-neutral-900"
+      }`}
     >
       <div className="max-w-lg mx-auto">
         {/* Header */}
@@ -33,11 +43,25 @@ export default function PaymentOrder() {
 
           {/* Price Highlight */}
           <div className="mb-5">
-            <div className="inline-flex items-baseline gap-1.5 px-6 py-2.5 rounded-2xl bg-neutral-950 border border-neutral-800">
-              <span className="text-xs uppercase tracking-widest text-neutral-400 mr-1">
+            <div
+              className={`inline-flex items-baseline gap-1.5 px-6 py-2.5 rounded-2xl border transition-colors duration-500 ${
+                isLightTheme
+                  ? "bg-neutral-100 border-neutral-200"
+                  : "bg-neutral-950 border-neutral-800"
+              }`}
+            >
+              <span
+                className={`text-xs uppercase tracking-widest mr-1 ${
+                  isLightTheme ? "text-neutral-500" : "text-neutral-400"
+                }`}
+              >
                 Price:
               </span>
-              <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+              <span
+                className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
+                  isLightTheme ? "text-black" : "text-white"
+                }`}
+              >
                 ৳599/-
               </span>
             </div>
@@ -45,21 +69,41 @@ export default function PaymentOrder() {
 
           {/* Payment & Delivery Deadlines */}
           <div className="flex flex-wrap items-center justify-center gap-2.5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-xs text-neutral-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <div
+              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs transition-colors duration-500 ${
+                isLightTheme
+                  ? "bg-neutral-100 border-neutral-200 text-neutral-700"
+                  : "bg-neutral-950 border-neutral-800 text-neutral-300"
+              }`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
               <span>
                 Payment Deadline:{" "}
-                <strong className="text-white font-semibold">
+                <strong
+                  className={`font-semibold ${
+                    isLightTheme ? "text-black" : "text-white"
+                  }`}
+                >
                   30 Nov 2026
                 </strong>
               </span>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-xs text-neutral-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <div
+              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs transition-colors duration-500 ${
+                isLightTheme
+                  ? "bg-neutral-100 border-neutral-200 text-neutral-700"
+                  : "bg-neutral-950 border-neutral-800 text-neutral-300"
+              }`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>
                 Delivery By:{" "}
-                <strong className="text-white font-semibold">
+                <strong
+                  className={`font-semibold ${
+                    isLightTheme ? "text-black" : "text-white"
+                  }`}
+                >
                   10 Dec 2026
                 </strong>
               </span>
@@ -69,9 +113,19 @@ export default function PaymentOrder() {
 
         <div className="space-y-4">
           {/* Step 1: Confirm Order on WhatsApp */}
-          <div className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-6">
+          <div
+            className={`border rounded-2xl p-6 transition-colors duration-500 ${
+              isLightTheme
+                ? "bg-neutral-50 border-neutral-200"
+                : "bg-neutral-950 border-neutral-800/80"
+            }`}
+          >
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+              <span
+                className={`text-xs font-semibold uppercase tracking-widest ${
+                  isLightTheme ? "text-neutral-500" : "text-neutral-400"
+                }`}
+              >
                 Step 01 — Order Confirmation
               </span>
               <span className="w-2 h-2 rounded-full bg-[#25D366]" />
@@ -96,15 +150,31 @@ export default function PaymentOrder() {
           </div>
 
           {/* Step 2: Payment Method (bKash / Nagad) */}
-          <div className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-6">
+          <div
+            className={`border rounded-2xl p-6 transition-colors duration-500 ${
+              isLightTheme
+                ? "bg-neutral-50 border-neutral-200"
+                : "bg-neutral-950 border-neutral-800/80"
+            }`}
+          >
             <div className="flex items-center justify-between mb-5">
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-widest text-neutral-400">
+                <span
+                  className={`block text-xs font-semibold uppercase tracking-widest ${
+                    isLightTheme ? "text-neutral-500" : "text-neutral-400"
+                  }`}
+                >
                   Step 02 — Send Payment
                 </span>
                 <span className="text-xs text-neutral-500">
                   Amount to send:{" "}
-                  <strong className="text-white font-semibold">599/-</strong>
+                  <strong
+                    className={`font-semibold ${
+                      isLightTheme ? "text-black" : "text-white"
+                    }`}
+                  >
+                    599/-
+                  </strong>
                 </span>
               </div>
 
@@ -129,19 +199,33 @@ export default function PaymentOrder() {
             </div>
 
             {/* Clean Copyable Number Row */}
-            <div className="flex items-center justify-between bg-black border border-neutral-800 rounded-xl px-4 py-3 mb-3">
+            <div
+              className={`flex items-center justify-between border rounded-xl px-4 py-3 mb-3 transition-colors duration-500 ${
+                isLightTheme
+                  ? "bg-white border-neutral-300"
+                  : "bg-black border-neutral-800"
+              }`}
+            >
               <div>
                 <p className="text-[11px] uppercase tracking-wider text-neutral-500">
                   bKash / Nagad Personal
                 </p>
-                <p className="text-lg font-mono font-semibold tracking-wider text-white">
+                <p
+                  className={`text-lg font-mono font-semibold tracking-wider ${
+                    isLightTheme ? "text-black" : "text-white"
+                  }`}
+                >
                   {number}
                 </p>
               </div>
 
               <button
                 onClick={handleCopy}
-                className="px-4 py-2 rounded-lg text-xs font-medium bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-white transition-colors cursor-pointer"
+                className={`px-4 py-2 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
+                  isLightTheme
+                    ? "bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-black"
+                    : "bg-neutral-900 hover:bg-neutral-800 border-neutral-700 text-white"
+                }`}
               >
                 {copied ? "Copied" : "Copy"}
               </button>
