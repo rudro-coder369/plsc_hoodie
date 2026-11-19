@@ -31,6 +31,18 @@ export default function PaymentOrder() {
             Confirm via WhatsApp first, then complete your payment.
           </p>
 
+          {/* Price Highlight */}
+          <div className="mb-5">
+            <div className="inline-flex items-baseline gap-1.5 px-6 py-2.5 rounded-2xl bg-neutral-950 border border-neutral-800">
+              <span className="text-xs uppercase tracking-widest text-neutral-400 mr-1">
+                Price:
+              </span>
+              <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                ৳599/-
+              </span>
+            </div>
+          </div>
+
           {/* Payment & Delivery Deadlines */}
           <div className="flex flex-wrap items-center justify-center gap-2.5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-950 border border-neutral-800 text-xs text-neutral-300">
@@ -86,9 +98,16 @@ export default function PaymentOrder() {
           {/* Step 2: Payment Method (bKash / Nagad) */}
           <div className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-6">
             <div className="flex items-center justify-between mb-5">
-              <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-                Step 02 — Send Payment
-              </span>
+              <div>
+                <span className="block text-xs font-semibold uppercase tracking-widest text-neutral-400">
+                  Step 02 — Send Payment
+                </span>
+                <span className="text-xs text-neutral-500">
+                  Amount to send:{" "}
+                  <strong className="text-white font-semibold">599/-</strong>
+                </span>
+              </div>
+
               <div className="flex items-center gap-4">
                 <div className="relative w-14 h-10 sm:w-16 sm:h-11">
                   <Image
