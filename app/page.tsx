@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import RegistrationPage from "@/app/registration/page";
 import RagDayPage from "@/app/rag-day/page";
 import AfterPartyPage from "@/app/after-party/page";
 import CostingPage from "@/app/costing/page";
@@ -20,6 +21,9 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="grow">
+        {/* 0. Registration */}
+        <RegistrationPage />
+
         {/* 1. Rag Day */}
         <RagDayPage />
 
