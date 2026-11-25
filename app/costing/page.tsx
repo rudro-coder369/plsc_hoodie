@@ -117,7 +117,7 @@ export default function CostingPage() {
                 Total Cost
               </span>
               <span className="text-3xl font-extrabold tracking-tight text-white">
-                ৳1,000/-
+                ৳800/-
               </span>
             </div>
           </div>
