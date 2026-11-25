@@ -5,8 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Plscian — 350+ GSM Signature Hoodie",
-  description: "Official landing page for Plscian 350+ GSM Heavyweight Hoodie.",
+  title: "Plscian | SSC Batch 2027",
+  description:
+    "Plscian is created for all products and merchandise of SSC Batch 2027.",
 };
 
 export default function RootLayout({
