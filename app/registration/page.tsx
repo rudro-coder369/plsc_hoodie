@@ -9,15 +9,16 @@ export default function RegistrationPage() {
       className="w-full pt-8 pb-24 px-5 sm:px-8 border-b border-neutral-900 bg-black text-white"
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-        {/* 1. First: Clean Edge-to-Edge Poster Banner */}
-        <div className="relative w-full aspect-3/1 sm:aspect-[3.2/1] rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-800/80 bg-neutral-950 mb-12">
+        {/* 1. First: Full Dynamic Poster Banner (No Cropping) */}
+        <div className="w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-800/80 bg-neutral-950 mb-12">
           <Image
             src="/images/poster.jpg"
             alt="Epilogue — The After Party Banner"
-            fill
+            width={1920}
+            height={600}
             priority
             sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover"
+            className="w-full h-auto block"
           />
         </div>
 
